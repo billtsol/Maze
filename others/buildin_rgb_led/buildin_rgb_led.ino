@@ -4,7 +4,7 @@
 
 Adafruit_NeoPixel pixels(1, BUILDIN_RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
 
-void setup () {  
+void setup () {
   pixels.begin();
 
 }

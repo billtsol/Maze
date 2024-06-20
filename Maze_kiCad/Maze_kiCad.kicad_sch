@@ -867,10 +867,797 @@
 				)
 			)
 		)
+		(symbol "Sensor_Proximity:TSSP58038"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U2"
+				(at -1.735 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TSSP58038"
+				(at -1.735 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+				(at -1.27 -9.525 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+				(at 16.51 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "IR Detector for Mid Range Proximity Sensor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "opto IR receiver proximity sensor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Vishay*MINICAST*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TSSP58038_0_0"
+				(arc
+					(start -10.287 1.397)
+					(mid -11.0899 -0.1852)
+					(end -10.287 -1.778)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -5.08) (xy 0.127 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 5.08) (xy 0.127 5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "DEMOD"
+					(at -3.175 0.254 900)
+					(effects
+						(font
+							(size 1.524 1.524)
+						)
+					)
+				)
+			)
+			(symbol "TSSP58038_0_1"
+				(rectangle
+					(start -10.16 6.35)
+					(end 7.62 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -6.096 5.588)
+					(end 0.127 -5.588)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.763 0.381) (xy -9.652 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.763 0.381) (xy -9.271 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.763 0.381) (xy -8.763 0.889)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.636 -0.635) (xy -9.525 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.636 -0.635) (xy -9.144 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.636 -0.635) (xy -8.636 -0.127)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.382 -1.016) (xy -6.731 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.921) (xy 0.127 -2.921)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.905) (xy 1.27 -3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.397 -3.556) (xy 1.524 -3.556)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.651 -3.556) (xy 1.524 -3.556)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.651 -3.556) (xy 1.651 -3.302)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 0) (xy 1.905 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 4.445) (xy 1.905 5.08) (xy 2.54 5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.382 0.635) (xy -6.731 0.635) (xy -7.62 -1.016) (xy -8.382 0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.096 1.397) (xy -7.62 1.397) (xy -7.62 -1.778) (xy -6.096 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -3.175) (xy 1.905 -3.81) (xy 1.905 -5.08) (xy 2.54 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 1.905 -1.905) (xy 1.905 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.54 1.27)
+					(end 1.27 4.445)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TSSP58038_1_1"
+				(pin output line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 10.16 -5.08 180)
+					(length 2.54)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Proximity:TSSP58038")
+		(at 137.16 35.56 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "333bc080-da79-4c35-8de1-60a095d20612")
+		(property "Reference" "U6"
+			(at 144.78 32.5549 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TSSP58038"
+			(at 144.78 35.0949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+			(at 127.635 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+			(at 144.78 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IR Detector for Mid Range Proximity Sensor"
+			(at 137.16 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b56da66e-30d9-43ad-ae5b-55df87d8fd78")
+		)
+		(pin "2"
+			(uuid "fd1d8996-d234-4edf-a783-b16341c7e708")
+		)
+		(pin "3"
+			(uuid "c4ac645b-4406-43e5-9cb5-36c6819a6cd5")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Proximity:TSSP58038")
+		(at 109.22 35.56 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e63f0dc-60f3-414c-91ba-3f16c929bbad")
+		(property "Reference" "U5"
+			(at 116.84 32.5549 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TSSP58038"
+			(at 116.84 35.0949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+			(at 99.695 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+			(at 116.84 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IR Detector for Mid Range Proximity Sensor"
+			(at 109.22 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2a25a1a0-6481-4ca5-8624-4668d11b8cd6")
+		)
+		(pin "2"
+			(uuid "f676bb9f-7224-4a5a-b118-65e9851dcd5f")
+		)
+		(pin "3"
+			(uuid "5d9edf78-c028-4667-9313-03260bc06002")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Proximity:TSSP58038")
+		(at 22.86 35.56 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ae84690c-ded3-4b82-81d0-02756fca1f20")
+		(property "Reference" "U2"
+			(at 30.48 32.5549 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TSSP58038"
+			(at 30.48 35.0949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+			(at 13.335 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+			(at 30.48 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IR Detector for Mid Range Proximity Sensor"
+			(at 22.86 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "02c01f53-7fbe-4ebc-9977-95c52570d599")
+		)
+		(pin "2"
+			(uuid "1120b359-7c85-46dd-b7cb-495ee0db1610")
+		)
+		(pin "3"
+			(uuid "f1d5599f-6bb8-4ee7-bf0a-d61c983ea2b9")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Proximity:TSSP58038")
+		(at 50.8 35.56 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b11420f3-756a-4aff-94a1-46d0e1afadbd")
+		(property "Reference" "U3"
+			(at 58.42 32.5549 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TSSP58038"
+			(at 58.42 35.0949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+			(at 41.275 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+			(at 58.42 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IR Detector for Mid Range Proximity Sensor"
+			(at 50.8 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67281fad-ae05-4ef3-ace3-81599f211c21")
+		)
+		(pin "2"
+			(uuid "71f4e68c-c2f6-45be-8759-09b7d168e493")
+		)
+		(pin "3"
+			(uuid "30e2f6d8-3027-4462-9796-a177e32976ef")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Proximity:TSSP58038")
+		(at 165.1 35.56 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b309af63-7d77-4171-bf53-44423d7f46b5")
+		(property "Reference" "U7"
+			(at 172.72 32.5549 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TSSP58038"
+			(at 172.72 35.0949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+			(at 155.575 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+			(at 172.72 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IR Detector for Mid Range Proximity Sensor"
+			(at 165.1 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2bad08ae-1f97-4059-a7f4-34a01d9147ea")
+		)
+		(pin "2"
+			(uuid "987d36bf-fb05-4ea4-b3df-a36b8af95658")
+		)
+		(pin "3"
+			(uuid "7639a65a-c7a6-433b-b1c6-3bd678cacc48")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "U7")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "PCM_Espressif:ESP32-S2-DevKitC-1")
-		(at 140.97 97.79 0)
+		(at 144.78 118.11 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -879,7 +1666,7 @@
 		(fields_autoplaced yes)
 		(uuid "b3ba5db4-9296-40bb-9911-8475deb51362")
 		(property "Reference" "U1"
-			(at 140.97 64.77 0)
+			(at 144.78 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -887,7 +1674,7 @@
 			)
 		)
 		(property "Value" "ESP32-S2-DevKitC-1"
-			(at 140.97 67.31 0)
+			(at 144.78 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -895,7 +1682,7 @@
 			)
 		)
 		(property "Footprint" "PCM_Espressif:ESP32-S2-DevKitC-1"
-			(at 140.97 130.81 0)
+			(at 144.78 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -904,7 +1691,7 @@
 			)
 		)
 		(property "Datasheet" "https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-s2-devkitc-1.html"
-			(at 152.4 133.35 0)
+			(at 156.21 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -913,7 +1700,7 @@
 			)
 		)
 		(property "Description" "ESP32-S2-DevKitC-1"
-			(at 140.97 97.79 0)
+			(at 144.78 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1057,6 +1844,79 @@
 			(project "Maze_kiCad"
 				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Proximity:TSSP58038")
+		(at 78.74 35.56 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dfeb47b3-3090-4056-8c62-3e98a24b06fa")
+		(property "Reference" "U4"
+			(at 86.36 32.5549 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TSSP58038"
+			(at 86.36 35.0949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "OptoDevice:Vishay_MINICAST-3Pin"
+			(at 69.215 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.vishay.com/docs/82476/tssp58p38.pdf"
+			(at 86.36 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "IR Detector for Mid Range Proximity Sensor"
+			(at 78.74 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "52ffe76a-6ab7-4733-98c2-9b294ad35aa2")
+		)
+		(pin "2"
+			(uuid "d2fc6e32-edbc-40ed-aaef-4c1b54a6cc5d")
+		)
+		(pin "3"
+			(uuid "1a5e55db-8d8b-4f7e-a06f-c4926c8352f1")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "U4")
 					(unit 1)
 				)
 			)

@@ -1289,6 +1289,319 @@
 				)
 			)
 		)
+		(symbol "drv8835:DRV8835"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "MotorDriver1"
+				(at -27.94 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DRV8835"
+				(at -27.94 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Library:DRV8835"
+				(at -27.94 -22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at -27.94 -22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at -27.94 -22.86 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "DRV8835_1_1"
+				(rectangle
+					(start -43.18 -7.62)
+					(end -12.7 -35.56)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin bidirectional line
+					(at -45.72 -25.4 0)
+					(length 2.54)
+					(name "AENBL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "AENBL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -45.72 -29.21 0)
+					(length 2.54)
+					(name "APHASE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "APHASE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -29.21 180)
+					(length 2.54)
+					(name "Aout1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "Aout1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -25.4 180)
+					(length 2.54)
+					(name "Aout2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "Aout2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -45.72 -17.78 0)
+					(length 2.54)
+					(name "BENBL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "BENBL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -45.72 -21.59 0)
+					(length 2.54)
+					(name "BPHASE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "BPHASE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -21.59 180)
+					(length 2.54)
+					(name "Bout1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "Bout1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -17.78 180)
+					(length 2.54)
+					(name "Bout2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "Bout2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -45.72 -10.16 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 -10.16 180)
+					(length 2.54)
+					(name "GND_HigtVolt"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "GND_HigtVolt"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -45.72 -33.02 0)
+					(length 2.54)
+					(name "MODE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MODE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -45.72 -13.97 0)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -10.16 -13.97 180)
+					(length 2.54)
+					(name "VCC_HightVolt"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VCC_HightVolt"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 -33.02 180)
+					(length 2.54)
+					(name "VMM"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "VMM"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "mpu6050:GY-521"
 			(pin_names
 				(offset 1.016)
@@ -2421,6 +2734,110 @@
 			(project "Maze_kiCad"
 				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
 					(reference "U8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "drv8835:DRV8835")
+		(at 284.48 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c7182ef0-85ea-401b-bf7b-c1232c9db911")
+		(property "Reference" "MotorDriver1"
+			(at 256.54 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "DRV8835"
+			(at 256.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "drv8835:drv8835"
+			(at 256.54 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "BENBL"
+			(uuid "40f042df-8e04-42cd-930f-74fe8ff7a56e")
+		)
+		(pin "AENBL"
+			(uuid "4ff0eaba-f135-4543-9309-308dc11c93ea")
+		)
+		(pin "APHASE"
+			(uuid "d8049371-123a-4dd6-9268-f42712dc62a1")
+		)
+		(pin "VMM"
+			(uuid "125d201b-bf83-4ee3-8d15-df7a2ed96c38")
+		)
+		(pin "BPHASE"
+			(uuid "3fcae3c7-22b3-432a-82e0-f604d47c575e")
+		)
+		(pin "Aout1"
+			(uuid "5bf80fc1-2dcf-42c2-abf4-36abc35ae84c")
+		)
+		(pin "Aout2"
+			(uuid "e5929824-872c-4526-9eae-53b6fe1213bd")
+		)
+		(pin "GND_HigtVolt"
+			(uuid "d465a2bb-ea7b-4e25-89aa-3d0140eced4b")
+		)
+		(pin "Bout1"
+			(uuid "52b1fd5f-0cdd-42b6-a5fb-6886468694fb")
+		)
+		(pin "GND"
+			(uuid "fae6c7f9-b6fe-4bbc-972e-3150d88ac4a6")
+		)
+		(pin "MODE"
+			(uuid "7811bb25-91ae-4e2e-a574-51bd5b082282")
+		)
+		(pin "VCC_HightVolt"
+			(uuid "d65e6032-ac5a-4d4a-ba0e-007614f8bd8a")
+		)
+		(pin "VCC"
+			(uuid "5d4c71ea-241d-4dfb-a78f-eea07892c6f0")
+		)
+		(pin "Bout2"
+			(uuid "05d279b6-b4e0-421d-ae28-1902a3485094")
+		)
+		(instances
+			(project "Maze_kiCad"
+				(path "/22108416-3e7d-4108-b707-2b088264c2dd"
+					(reference "MotorDriver1")
 					(unit 1)
 				)
 			)

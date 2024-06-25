@@ -164,6 +164,10 @@
 	(net 82 "unconnected-(MotorDriver1-PadBout2)")
 	(net 83 "unconnected-(MotorDriver1-PadVMM)")
 	(net 84 "unconnected-(MotorDriver1-PadVCC_HightVolt)")
+	(net 85 "unconnected-(U9-ECHO-Pad3)")
+	(net 86 "unconnected-(U9-VCC-Pad1)")
+	(net 87 "unconnected-(U9-GND-Pad4)")
+	(net 88 "unconnected-(U9-TRIG-Pad2)")
 	(footprint "OptoDevice:Vishay_MINICAST-3Pin"
 		(layer "F.Cu")
 		(uuid "12c681e3-a467-40df-b4c3-d944d53bdced")
@@ -181,7 +185,7 @@
 				)
 			)
 		)
-		(property "Value" "TSSP58038"
+		(property "Value" "TCRT5000"
 			(at 2.55 4.6 180)
 			(layer "F.Fab")
 			(uuid "fda643c8-dffe-41d9-9340-11ae128c9806")
@@ -459,7 +463,7 @@
 				)
 			)
 		)
-		(property "Value" "ESP32-S2-DevKitC-1"
+		(property "Value" "ESP32-S3-DevKitC-1"
 			(at 11.43 58.42 180)
 			(layer "F.SilkS")
 			(uuid "057cc7dd-1208-420f-98bb-736acb3fee6d")
@@ -1705,7 +1709,7 @@
 				)
 			)
 		)
-		(property "Value" "TSSP58038"
+		(property "Value" "TCRT5000"
 			(at 2.55 4.6 180)
 			(layer "F.Fab")
 			(uuid "32090d27-d0bf-4c11-b03e-07ce25db9395")
@@ -1983,7 +1987,7 @@
 				)
 			)
 		)
-		(property "Value" "TSSP58038"
+		(property "Value" "TCRT5000"
 			(at 2.55 4.6 180)
 			(layer "F.Fab")
 			(uuid "210723f3-a54a-41d6-b2ce-89564d2c805b")
@@ -2259,7 +2263,7 @@
 				)
 			)
 		)
-		(property "Value" "GY-521"
+		(property "Value" "Gyro mpu-6050"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "4d3c9019-ec66-4870-a1da-442456024bf6")
@@ -2644,6 +2648,458 @@
 			(uuid "7248707c-0d28-411c-a6d5-077f124bd103")
 		)
 	)
+	(footprint "ultrasonic:XCVR_HC-SR04"
+		(layer "F.Cu")
+		(uuid "a0303718-46cf-487b-b0a5-984e0af0541f")
+		(at 58 60.19 -90)
+		(property "Reference" "U9"
+			(at -19.48505 3.31671 90)
+			(layer "F.SilkS")
+			(uuid "bdcc2a19-bf6f-4eac-9ea3-d2d8265cc6df")
+			(effects
+				(font
+					(size 1.00052 1.00052)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "HC-SR04"
+			(at 23.8102 3.370695 90)
+			(layer "F.Fab")
+			(uuid "a0d18b09-c78f-4556-8bf4-fb21100c027b")
+			(effects
+				(font
+					(size 1.001693 1.001693)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "ultrasonic:XCVR_HC-SR04"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4c5a0072-42b0-4920-9e04-353c88153d0c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4eb9a961-a8d6-4e28-8530-711b0ad3805b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "9a9e32c5-2ad9-4f74-b47b-61e61254e802")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MF" "SparkFun Electronics"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3190de3f-47e1-46c9-a23b-3643a1f4c1bd")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description_1" "\nHC-SR04 Ultrasonic Sensor Qwiic Platform Evaluation Expansion Board\n"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "975dc5b7-04cd-4ccb-bd31-3a2fcda46379")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Package" "None"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f21033ce-33cb-4227-b0bf-cc2f417e4779")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Price" "None"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "6d8aae3d-e44b-45e4-9575-7f22565a8454")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/HC-SR04/SparkFun+Electronics/view-part/?ref=eda"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "b2945773-b23d-4e0b-bb60-bb05d0f2b8f0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/HC-SR04/SparkFun+Electronics/view-part/?ref=snap"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a5059e50-fb31-49ca-b548-4a0b357f2ec3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MP" "HC-SR04"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "c46e2969-5485-4bce-97c1-de2675fff483")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Availability" "Not in stock"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "2dd979af-bdc4-4c01-afee-100c31644f7e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MANUFACTURER" "Osepp"
+			(at 0 0 -90)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "413186c8-5bc6-4449-956d-ada29a0c1d98")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/fad23309-78bb-4f66-a9c7-16d2a3a74dfb")
+		(sheetname "Root")
+		(sheetfile "Maze_kiCad.kicad_sch")
+		(attr through_hole)
+		(fp_line
+			(start -21.5 19.27)
+			(end -5.5 19.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "71a5de59-8ad2-456b-bfb6-d51e22a24ff2")
+		)
+		(fp_line
+			(start 5.5 19.27)
+			(end 21.5 19.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "77262fc9-191b-4da3-ba29-5687ee812d14")
+		)
+		(fp_line
+			(start -22.5 5.47)
+			(end -22.5 4.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "837256ea-6e27-4aa1-a901-358bb5c66ea0")
+		)
+		(fp_line
+			(start -21.5 5.47)
+			(end -21.5 19.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "5d650bde-bdef-4571-92a3-5095ecf84933")
+		)
+		(fp_line
+			(start -21.5 5.47)
+			(end -22.5 5.47)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "df8bdcd8-8a65-4dc8-9e03-1dbfe22ce0fc")
+		)
+		(fp_line
+			(start -5.5 5.47)
+			(end -5.5 19.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "11b9c75a-3c80-4633-ac24-9764b4ef9e2e")
+		)
+		(fp_line
+			(start -5.5 5.47)
+			(end -21.5 5.47)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "26ee5723-ec8c-4b76-b0e3-4d117c0d367c")
+		)
+		(fp_line
+			(start 5.5 5.47)
+			(end 5.5 19.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "bc6267ea-26fb-439d-8ef9-a1316fe504f0")
+		)
+		(fp_line
+			(start 5.5 5.47)
+			(end -5.5 5.47)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "65b3b064-8032-4e34-9419-a5cf618418fd")
+		)
+		(fp_line
+			(start 21.5 5.47)
+			(end 21.5 19.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "dc6402bf-88fd-447f-ab22-af7d8722f93d")
+		)
+		(fp_line
+			(start 21.5 5.47)
+			(end 5.5 5.47)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "e03d13e7-ddf6-434f-861b-0d2c61673208")
+		)
+		(fp_line
+			(start 22.5 5.47)
+			(end 21.5 5.47)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "c76a379b-71aa-4b9f-a1b9-d9213a4c36a1")
+		)
+		(fp_line
+			(start -22.5 4.27)
+			(end 22.5 4.27)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "7d358895-d61c-4eb0-877d-a3fbc2e2dca9")
+		)
+		(fp_line
+			(start 22.5 4.27)
+			(end 22.5 5.47)
+			(stroke
+				(width 0.127)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "a37164e8-b13c-4592-8198-a117339a97d3")
+		)
+		(fp_line
+			(start -22.75 19.5)
+			(end 22.75 19.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e33735a8-42e6-4917-8289-a3bc7ad63555")
+		)
+		(fp_line
+			(start 22.75 19.5)
+			(end 22.75 4)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "1dd9474f-61c0-4dc7-8cf6-b51b715ec1aa")
+		)
+		(fp_line
+			(start -22.75 4)
+			(end -22.75 19.5)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "46f6bcb4-264f-4377-907e-1d453ed2998d")
+		)
+		(fp_line
+			(start -5 4)
+			(end -22.75 4)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "de7e27d3-18df-4132-94ec-8a8f14c5edab")
+		)
+		(fp_line
+			(start 5 4)
+			(end 5 -1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "afac4175-9dc8-4f13-b09f-4cdd9e09b191")
+		)
+		(fp_line
+			(start 22.75 4)
+			(end 5 4)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "12bfd5e2-a847-45b0-ac15-e01424c6e266")
+		)
+		(fp_line
+			(start -5 -1.25)
+			(end -5 4)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "f11c8568-a98c-4eab-bf55-c70181db4d91")
+		)
+		(fp_line
+			(start 5 -1.25)
+			(end -5 -1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "F.CrtYd")
+			(uuid "e897c543-a32c-4468-8856-71934bd46aed")
+		)
+		(pad "1" thru_hole circle
+			(at -3.81 0 270)
+			(size 1.53 1.53)
+			(drill 1.02)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 86 "unconnected-(U9-VCC-Pad1)")
+			(pinfunction "VCC")
+			(pintype "power_in")
+			(solder_mask_margin 0.102)
+			(uuid "67550ff0-bc18-4fb5-8b79-d07585c4af5f")
+		)
+		(pad "2" thru_hole circle
+			(at -1.27 0 270)
+			(size 1.53 1.53)
+			(drill 1.02)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 88 "unconnected-(U9-TRIG-Pad2)")
+			(pinfunction "TRIG")
+			(pintype "bidirectional")
+			(solder_mask_margin 0.102)
+			(uuid "b7a1d397-4b7a-4b9e-97fe-5b7297b9378f")
+		)
+		(pad "3" thru_hole circle
+			(at 1.27 0 270)
+			(size 1.53 1.53)
+			(drill 1.02)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 85 "unconnected-(U9-ECHO-Pad3)")
+			(pinfunction "ECHO")
+			(pintype "bidirectional")
+			(solder_mask_margin 0.102)
+			(uuid "5179f4dc-3665-4283-a410-3c18900b3d5f")
+		)
+		(pad "4" thru_hole circle
+			(at 3.81 0 270)
+			(size 1.53 1.53)
+			(drill 1.02)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(net 87 "unconnected-(U9-GND-Pad4)")
+			(pinfunction "GND")
+			(pintype "power_in")
+			(solder_mask_margin 0.102)
+			(uuid "75aaf0cd-1ac2-41a5-94f9-f9fd2c5665e5")
+		)
+	)
 	(footprint "drv8835:drv8835"
 		(layer "F.Cu")
 		(uuid "a4832c25-68ac-4b8a-ba90-8a4477c23613")
@@ -2925,7 +3381,7 @@
 				)
 			)
 		)
-		(property "Value" "TSSP58038"
+		(property "Value" "TCRT5000"
 			(at 2.55 4.6 180)
 			(layer "F.Fab")
 			(uuid "76a0ad64-2819-4a02-8329-02b2db2a1b20")
@@ -3203,7 +3659,7 @@
 				)
 			)
 		)
-		(property "Value" "TSSP58038"
+		(property "Value" "TCRT5000"
 			(at 2.55 4.6 180)
 			(layer "F.Fab")
 			(uuid "66a2f8be-9c5c-4f88-9253-e33c2f91a916")
@@ -3481,7 +3937,7 @@
 				)
 			)
 		)
-		(property "Value" "TSSP58038"
+		(property "Value" "TCRT5000"
 			(at 2.55 4.6 180)
 			(layer "F.Fab")
 			(uuid "b027f7f3-2089-4775-8454-22ef9e7b8b05")

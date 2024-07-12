@@ -12673,7 +12673,7 @@
 				)
 			)
 		)
-		(property "Value" "pins: 42_41_40_39_38_37"
+		(property "Value" "pins: gnd_gnd_45_0_35_36"
 			(at 196.342 138.43 90)
 			(effects
 				(font

@@ -35,8 +35,8 @@
 // ===========================
 // Enter your WiFi credentials
 // ===========================
-const char* ssid = "JM-03DC80";
-const char* password = "8NVWB2DR7ECYRLXC2HB2";
+const char* ssid = "VODAFONE_0152";
+const char* password = "2egpa5u95tfh73b8";
 
 void startCameraServer();
 void setupLedFlash(int pin);

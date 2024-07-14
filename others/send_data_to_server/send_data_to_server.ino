@@ -1,37 +1,3 @@
-/*
- WiFi Web Server LED Blink
-
- A simple web server that lets you blink an LED via the web.
- This sketch will print the IP address of your WiFi Shield (once connected)
- to the Serial monitor. From there, you can open that address in a web browser
- to turn on and off the LED on pin 5.
-
- If the IP address of your shield is yourAddress:
- http://yourAddress/H turns the LED on
- http://yourAddress/L turns it off
-
- This example is written for a network using WPA2 encryption. For insecure
- WEP or WPA, change the Wifi.begin() call and use Wifi.setMinSecurity() accordingly.
-
- Circuit:
- * WiFi shield attached
- * LED attached to pin 5
-
- created for arduino 25 Nov 2012
- by Tom Igoe
-
-ported for sparkfun esp32
-31.01.2017 by Jan Hendrik Berlin
-
- */
-
-// ------------------------------- LED
-#include <Adafruit_NeoPixel.h> // RGB Led library
-
-#define BUILDIN_RGB_LED_PIN 48
-
-Adafruit_NeoPixel pixels(1, BUILDIN_RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
-// ------------------------------- LED
 
 #include <WiFi.h>
 
@@ -42,7 +8,6 @@ WiFiServer server(80);
 
 void setup()
 {
-  pixels.begin();
   Serial.begin(115200);
   delay(10);
 
@@ -95,9 +60,13 @@ void loop()
             client.println("Content-type:text/html");
             client.println();
 
+            // Example JSON object
+            String json = "{\"sensor\":\"temperature\",\"value\":25.5}";
+
+            client.println("<div id='json-data' >");
             // the content of the HTTP response follows the header:
-            client.print("Click <a href=\"/H\">here</a> to turn the LED on pin 38 on.<br>");
-            client.print("Click <a href=\"/L\">here</a> to turn the LED on pin 38 off.<br>");
+            client.print(json);
+            client.println("</div>");
 
             // The HTTP response ends with another blank line:
             client.println();
@@ -114,21 +83,6 @@ void loop()
           currentLine += c; // add it to the end of the currentLine
         }
 
-        // Check to see if the client request was "GET /H" or "GET /L":
-        if (currentLine.endsWith("GET /H"))
-        {
-          pixels.clear();
-          pixels.setPixelColor(0, pixels.Color(255, 0, 0));
-          pixels.show();
-          delay(1000);
-        }
-        if (currentLine.endsWith("GET /L"))
-        {
-          pixels.clear();
-          pixels.setPixelColor(0, pixels.Color(0, 0, 255));
-          pixels.show();
-          delay(1000);
-        }
       }
     }
     // close the connection:

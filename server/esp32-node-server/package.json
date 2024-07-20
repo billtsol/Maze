@@ -1,0 +1,19 @@
+{
+  "name": "esp32-node-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chartjs-adapter-moment": "^1.0.1",
+    "express": "^4.19.2",
+    "moment": "^2.30.1",
+    "socket.io": "^4.7.5"
+  }
+}

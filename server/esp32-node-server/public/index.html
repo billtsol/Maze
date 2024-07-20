@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time ESP32 Data</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    canvas {
+      max-width: 800px;
+      margin: 50px auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">Real-Time ESP32 Data</h1>
+  left_wall: <div id="left_wall"></div> <br>
+  right_wall: <div id="right_wall"></div> <br>
+  straight_wall: <div id="straight_wall"></div> <br>
+
+  <script>
+
+    // Connect to the server using WebSockets
+    const socket = io();
+
+    // Listen for new data from the server
+    socket.on('newData', (data) => {
+      const currentTime = new Date().toLocaleTimeString();
+
+      // Add new data
+      const left_wall_element = document.getElementById('left_wall');
+      left_wall_element.innerText = data.left_wall;
+
+      const right_wall_element = document.getElementById('right_wall');
+      right_wall_element.innerText = data.right_wall;
+
+      const lstraight_wall_element = document.getElementById('straight_wall');
+      straight_wall_element.innerText = data.straight_wall;
+
+    });
+  </script>
+
+</body>
+
+</html>

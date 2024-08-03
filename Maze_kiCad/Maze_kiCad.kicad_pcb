@@ -1762,6 +1762,39 @@
 			(pintype "power_in")
 			(uuid "37f5e170-cd51-4dda-8370-20174ca8590e")
 		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/ESP32-S3-DEVKITC-1-N8R2--3DModel-STEP-56544.STEP"
+			(offset
+				(xyz 11.5 -30 7)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x22_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x22_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz 23 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "mpu6050:GY-521"
 		(layer "F.Cu")
@@ -2151,6 +2184,39 @@
 			(pintype "bidirectional")
 			(solder_mask_margin 0.102)
 			(uuid "7c096820-28e6-4906-8c53-b2439ebd3ab6")
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/MPU6050 v2.step"
+			(offset
+				(xyz 5 -10 10.5)
+			)
+			(scale
+				(xyz 1 1 1.0001)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x08_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz -9 9 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x08_P2.54mm_Vertical.step"
+			(offset
+				(xyz -9 9 9.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 -180 0)
+			)
 		)
 	)
 	(footprint "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical"
@@ -2913,6 +2979,17 @@
 			(pintype "power_in+no_connect")
 			(solder_mask_margin 0.102)
 			(uuid "a80e78ed-1b7c-43f4-9b5f-257d5a324506")
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/hc-sr04.step"
+			(offset
+				(xyz 0 -4 10)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
 		)
 	)
 	(footprint "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical"
@@ -4145,6 +4222,17 @@
 			(solder_mask_margin 0.102)
 			(uuid "1c0148e3-a4be-416c-be12-cd1c22b61f37")
 		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/RB141C1100--3DModel-STEP-520916.STEP"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint ""
 		(layer "F.Cu")
@@ -4489,6 +4577,28 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/pololu-s7v7f5.step"
+			(offset
+				(xyz -1.5 2 9.75)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 90)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x03_P2.54mm_Horizontal.wrl"
+			(offset
+				(xyz -1.5 0 11)
+			)
+			(scale
+				(xyz 1 1 1.1)
+			)
+			(rotate
+				(xyz 180 -90 180)
 			)
 		)
 	)
@@ -5090,6 +5200,61 @@
 			(solder_mask_margin 0.102)
 			(uuid "0a0cd1fc-bc9e-4040-ad9e-623cd59ad38f")
 		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/drv8835-dual-motor-driver-carrier.step"
+			(offset
+				(xyz 5.23 8.91 9.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -180 180 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x07_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz 4 8 9.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 -180 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x07_P2.54mm_Vertical.wrl"
+			(offset
+				(xyz -3.5 -7.5 9.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 -180 180)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x07_P2.54mm_Vertical.step"
+			(offset
+				(xyz -3.5 7.5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x07_P2.54mm_Vertical.step"
+			(offset
+				(xyz 4 7.5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "OptoDevice:Vishay_MINICAST-3Pin"
 		(layer "F.Cu")
@@ -5358,6 +5523,7 @@
 			(uuid "8addee51-f8e8-4d9d-a7bc-fff2cfd1a31f")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/OptoDevice.3dshapes/Vishay_MINICAST-3Pin.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5366,6 +5532,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/Line Sensor.step"
+			(offset
+				(xyz 2.5 -5 16.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -180)
 			)
 		)
 	)
@@ -6856,6 +7033,7 @@
 			(uuid "34210865-12cb-4339-8bc4-69fed1b99b98")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/OptoDevice.3dshapes/Vishay_MINICAST-3Pin.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6864,6 +7042,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/Line Sensor.step"
+			(offset
+				(xyz 2 -5 16.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -180)
 			)
 		)
 	)
@@ -7134,6 +7323,7 @@
 			(uuid "959e0cf7-e864-4deb-8ff8-7cf468c78e0b")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/OptoDevice.3dshapes/Vishay_MINICAST-3Pin.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7142,6 +7332,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/Line Sensor.step"
+			(offset
+				(xyz 2.5 -5 16.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -180)
 			)
 		)
 	)
@@ -7684,6 +7885,7 @@
 			(uuid "acef0aa0-a973-4dc4-a7f5-a9178a27952b")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/OptoDevice.3dshapes/Vishay_MINICAST-3Pin.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7692,6 +7894,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/Line Sensor.step"
+			(offset
+				(xyz 2.5 -5 16.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -180)
 			)
 		)
 	)
@@ -7962,6 +8175,7 @@
 			(uuid "1adea569-b240-4258-bc02-0a0dd8b15b13")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/OptoDevice.3dshapes/Vishay_MINICAST-3Pin.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7970,6 +8184,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/Line Sensor.step"
+			(offset
+				(xyz 2.5 -5 16.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -180)
 			)
 		)
 	)
@@ -10191,6 +10416,7 @@
 			(uuid "111e7cdc-0d86-49f6-84f7-3f2a4c10a2d8")
 		)
 		(model "${KICAD8_3DMODEL_DIR}/OptoDevice.3dshapes/Vishay_MINICAST-3Pin.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10199,6 +10425,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/Line Sensor.step"
+			(offset
+				(xyz 2.5 -5 16.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 -180)
 			)
 		)
 	)
@@ -10474,13 +10711,24 @@
 		)
 		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x03_P2.54mm_Vertical.wrl"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 0 -1.5)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 180 0)
+			)
+		)
+		(model "C:/Users/billt/Documents/github/Maze/3d_models/IR Receiver.STEP"
+			(offset
+				(xyz -0.3 0 -10.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -180 -90)
 			)
 		)
 	)
@@ -16635,13 +16883,6 @@
 		)
 	)
 	(group ""
-		(uuid "5adbc5e8-7614-44b4-a0f0-44dd01ecaac5")
-		(members "2e3ad9bf-0945-4695-a008-f93ccd6732db" "3694eb7e-dfd0-4d5c-b612-80219bb6c158"
-			"4e3784e7-c362-4c6f-86d2-fccfc75136a0" "b4682870-80ce-41da-93cd-21c36ecc7f4f"
-			"ca09c1a5-fbfb-4741-822c-876410023401"
-		)
-	)
-	(group ""
 		(uuid "78b1b7f7-7c41-44db-94b0-08899cf615ad")
 		(members "2f0dde38-c77f-4d39-8b67-095e9c4c8b8c" "6ef7eae7-de48-4c95-9997-007934c0b61e"
 			"9adb4b1e-1113-4ae5-8584-c5b582d4864b" "cd474e44-355d-4112-939b-1624ab3abd06"
@@ -16675,13 +16916,6 @@
 		(members "6765caff-4af6-4ef5-a02c-3db24df1e387" "8698c08e-3d9b-4e88-8592-efa540a739a7"
 			"9938f618-5893-442c-b6fc-a18e74733a60" "aaf001ce-a6e1-4a60-b8b9-6f9f47088e1b"
 			"dcddda03-62ef-479d-9fa4-96cecbd6245d" "e135c85d-fd7f-49b1-9e7b-067884c79301"
-		)
-	)
-	(group ""
-		(uuid "442e2f07-6155-4061-80f6-52d04375fcd6")
-		(members "10915824-8e96-4631-811b-4acdb605d7f3" "26aab9e8-28e7-43f8-83fd-6b933d10aa46"
-			"a3bdcf60-73cc-4e65-9b49-10e5b8131e73" "c356b628-5f89-42a3-ae46-f34bfe372287"
-			"d69c70ae-2492-442c-b9a3-151f3ab47bb9"
 		)
 	)
 	(group ""

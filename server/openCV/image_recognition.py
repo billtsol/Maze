@@ -38,8 +38,6 @@ def findObject(outputs, im):
     bbox = []              # Bounding boxes
     classIds = []          # Class IDs
     confs = []             # Confidence values
-    found_cat = False      # Flag to check if 'cat' is found
-    found_bird = False     # Flag to check if 'bird' is found
 
     # Iterate through each output from the network
     for output in outputs:
@@ -62,12 +60,6 @@ def findObject(outputs, im):
         i = i
         box = bbox[i]  # Get the bounding box
         x, y, w, h = box[0], box[1], box[2], box[3]  # Get coordinates and dimensions of the box
-
-        # Check the class name and set flags accordingly
-        if classNames[classIds[i]] == 'bird':
-            found_bird = True
-        elif classNames[classIds[i]] == 'cat':
-            found_cat = True
 
         # Draw rectangle around the object
         cv2.rectangle(im, (x, y), (x + w, y + h), (255, 0, 255), 2)

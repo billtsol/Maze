@@ -1,120 +1,114 @@
-/* ESP32CAM.ino
+/*
+  Ο κώδικας συνδέει ένα ESP32-CAM με WiFi και ρυθμίζει έναν web server 
+  που εξυπηρετεί live βίντεο και εικόνες από την κάμερα
+  σε τρεις διαφορετικές αναλύσεις: χαμηλή, μεσαία και υψηλή.
 
-  Ο παρακάτω κώδικας υλοποιεί έναν απλό διακομιστή web σε ένα ESP32-CAM για να προσφέρει
-  εικόνες από την κάμερα σε τρεις διαφορετικές αναλύσεις (χαμηλή, μεσαία και υψηλή). Κατά την
-  εκκίνηση, το ESP32-CAM συνδέεται στο Wi-Fi με τα προκαθορισμένα στοιχεία δικτύου (SSID και
-  κωδικό πρόσβασης) και εκκινεί έναν διακομιστή web στην πόρτα 80. Ο διακομιστής ορίζει
-  διαδρομές για κάθε ανάλυση εικόνας ("/cam-lo.jpg", "/cam-mid.jpg", "/cam-hi.jpg") και για κάθε
-  διαδρομή υπάρχει μία συνάρτηση που αλλάζει την ανάλυση της κάμερας και στέλνει την εικόνα στον
-  πελάτη. Οι εικόνες αποστέλλονται σε πραγματικό χρόνο μόλις ζητηθούν, και για κάθε επιτυχή ή
-  αποτυχημένη λήψη εικόνας, παρέχονται μηνύματα στο σειριακό monitor για ενημέρωση.
 */
 #include <WebServer.h>
 #include <WiFi.h>
 #include <esp32cam.h>
 
-// WiFi credentials
-const char* WIFI_SSID = "VODAFONE_0152";   // Your WiFi SSID
-const char* WIFI_PASS = "2egpa5u95tfh73b8"; // Your WiFi password
+// Στοιχεία σύνδεσης στο WiFi
+const char* WIFI_SSID = "Vodafone-C43726133";   // Το όνομα του δικτύου WiFi (SSID)
+const char* WIFI_PASS = "CYC9fKp9x9kH44Kt";     // Ο κωδικός πρόσβασης του WiFi
 
-// Create a web server on port 80
+// Δημιουργία web server στην πόρτα 80
 WebServer server(80);
 
-// Set camera resolutions
-static auto loRes = esp32cam::Resolution::find(320, 240);  // Low resolution
-static auto midRes = esp32cam::Resolution::find(350, 530); // Medium resolution
-static auto hiRes = esp32cam::Resolution::find(800, 600);  // High resolution
+// Ορισμός των αναλύσεων της κάμερας
+static auto loRes = esp32cam::Resolution::find(320, 240);  // Χαμηλή ανάλυση
+static auto midRes = esp32cam::Resolution::find(350, 530); // Μεσαία ανάλυση
+static auto hiRes = esp32cam::Resolution::find(800, 600);  // Υψηλή ανάλυση
 
-// Function to serve a JPEG image
+// Συνάρτηση για αποστολή JPEG εικόνας
 void serveJpg() {
-  // Capture a frame from the camera
+  // Λήψη εικόνας από την κάμερα
   auto frame = esp32cam::capture();
-  if (frame == nullptr) { // Check if capture was successful
+  if (frame == nullptr) {
     Serial.println("CAPTURE FAIL");
     server.send(503, "", ""); // Send 503 error if capture failed
     return;
   }
 
-  // Log capture success and frame details
   Serial.printf("CAPTURE OK %dx%d %db\n", frame->getWidth(), frame->getHeight(),
                 static_cast<int>(frame->size()));
 
-  // Set the content length of the HTTP response
+  // Ορισμός μήκους περιεχομένου της απόκρισης HTTP
   server.setContentLength(frame->size());
-  server.send(200, "image/jpeg"); // Send HTTP 200 OK with content type "image/jpeg"
+  server.send(200, "image/jpeg"); // Στείλε HTTP 200 OK με τύπο περιεχομένου "image/jpeg"
 
-  // Get the client and write the frame data to the client
+  // Πάρε τον client και γράψε τα δεδομένα του καρέ στον client
   WiFiClient client = server.client();
   frame->writeTo(client);
 }
 
-// Handler function for low-resolution image
+// Συνάρτηση διαχείρισης για εικόνα χαμηλής ανάλυσης
 void handleJpgLo() {
-  // Change the camera resolution to low
+  // Αλλαγή της ανάλυσης της κάμερας σε χαμηλή
   if (!esp32cam::Camera.changeResolution(loRes)) {
     Serial.println("SET-LO-RES FAIL");
   }
-  serveJpg(); // Serve the image
+  serveJpg(); // Αποστολή της εικόνας
 }
 
-// Handler function for high-resolution image
+// Συνάρτηση διαχείρισης για εικόνα υψηλής ανάλυσης
 void handleJpgHi() {
-  // Change the camera resolution to high
+  // Αλλαγή της ανάλυσης της κάμερας σε υψηλή
   if (!esp32cam::Camera.changeResolution(hiRes)) {
     Serial.println("SET-HI-RES FAIL");
   }
-  serveJpg(); // Serve the image
+  serveJpg(); // Αποστολή της εικόνας
 }
 
-// Handler function for medium-resolution image
+// Συνάρτηση διαχείρισης για εικόνα μεσαίας ανάλυσης
 void handleJpgMid() {
-  // Change the camera resolution to medium
+  // Αλλαγή της ανάλυσης της κάμερας σε μεσαία
   if (!esp32cam::Camera.changeResolution(midRes)) {
     Serial.println("SET-MID-RES FAIL");
   }
-  serveJpg(); // Serve the image
+  serveJpg(); // Αποστολή της εικόνας
 }
 
 void setup() {
-  Serial.begin(115200); // Initialize serial communication at 115200 baud rate
+  Serial.begin(115200); // Αρχικοποίηση σειριακής επικοινωνίας στα 115200 baud
   Serial.println();
 
   {
     using namespace esp32cam;
     Config cfg;
-    cfg.setPins(pins::AiThinker);  // Set camera module pins (e.g., Ai-Thinker module)
-    cfg.setResolution(hiRes);      // Set initial resolution to high
-    cfg.setBufferCount(2);         // Set buffer count to 2
-    cfg.setJpeg(80);               // Set JPEG quality (80%)
+    cfg.setPins(pins::AiThinker);  // Ορισμός pins του μοντέλου κάμερας (π.χ. Ai-Thinker)
+    cfg.setResolution(hiRes);      // Αρχική ανάλυση σε υψηλή
+    cfg.setBufferCount(2);         // Ορισμός του αριθμού buffer σε 2
+    cfg.setJpeg(80);               // Ποιότητα JPEG (80%)
 
-    // Initialize the camera with the specified configuration
+    // Αρχικοποίηση της κάμερας με την καθορισμένη διαμόρφωση
     bool ok = Camera.begin(cfg);
     Serial.println(ok ? "CAMERA OK" : "CAMERA FAIL"); // Check if camera initialization was successful
   }
 
-  // Initialize WiFi connection
+  // Αρχικοποίηση της σύνδεσης WiFi
   WiFi.persistent(false);
-  WiFi.mode(WIFI_STA); // Set WiFi mode to station (connect to an existing network)
-  WiFi.begin(WIFI_SSID, WIFI_PASS); // Start WiFi connection
-  while (WiFi.status() != WL_CONNECTED) { // Wait until connected
+  WiFi.mode(WIFI_STA); // Ορισμός λειτουργίας WiFi σε σταθμό (σύνδεση σε υπάρχον δίκτυο)
+  WiFi.begin(WIFI_SSID, WIFI_PASS); // Έναρξη σύνδεσης WiFi
+  while (WiFi.status() != WL_CONNECTED) { // Αναμονή μέχρι να συνδεθεί
     delay(500);
   }
 
-  // Print the IP address and available endpoints to the serial monitor
+  // Εμφάνιση της διεύθυνσης IP και των διαθέσιμων διαδρομών στον σειριακό παρακολούθηση
   Serial.print("http://");
   Serial.println(WiFi.localIP());
-  Serial.println("  /cam-lo.jpg");  // Low resolution image endpoint
-  Serial.println("  /cam-hi.jpg");  // High resolution image endpoint
-  Serial.println("  /cam-mid.jpg"); // Medium resolution image endpoint
+  Serial.println("  /cam-lo.jpg");  // Διαδρομή για εικόνα χαμηλής ανάλυσης
+  Serial.println("  /cam-hi.jpg");  // Διαδρομή για εικόνα υψηλής ανάλυσης
+  Serial.println("  /cam-mid.jpg"); // Διαδρομή για εικόνα μεσαίας ανάλυσης
 
-  // Define routes for different resolutions
-  server.on("/cam-lo.jpg", handleJpgLo);  // Low resolution route
-  server.on("/cam-hi.jpg", handleJpgHi);  // High resolution route
-  server.on("/cam-mid.jpg", handleJpgMid); // Medium resolution route
+  // Ορισμός διαδρομών για τις διαφορετικές αναλύσεις
+  server.on("/cam-lo.jpg", handleJpgLo);  // Διαδρομή χαμηλής ανάλυσης
+  server.on("/cam-hi.jpg", handleJpgHi);  // Διαδρομή υψηλής ανάλυσης
+  server.on("/cam-mid.jpg", handleJpgMid); // Διαδρομή μεσαίας ανάλυσης
 
-  server.begin(); // Start the web server
+  server.begin(); // Εκκίνηση του web server
 }
 
 void loop() {
-  server.handleClient(); // Handle incoming client requests
+  server.handleClient(); // Διαχείριση εισερχόμενων αιτημάτων πελατών
 }

@@ -1,3 +1,10 @@
+<!-- 
+ Ο κώδικας δημιουργεί μια διεπαφή που εμφανίζει σε πραγματικό χρόνο έναν πίνακα τύπου "maze"
+και τη βέλτιστη διαδρομή σε ένα grid 20x20, λαμβάνοντας δεδομένα μέσω WebSocket 
+από έναν server που επικοινωνεί με μια συσκευή ESP32. Το CSS ορίζει το grid με μικρά κελιά, 
+τα οποία χρωματίζονται ανάλογα με τη χρήση τους 
+
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,40 +17,106 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <style>
-    canvas {
-      max-width: 800px;
-      margin: 50px auto;
-      display: block;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(20, 30px);
+      grid-template-rows: repeat(20, 30px);
+      gap: 2px;
+    }
+
+    .cell {
+      width: 30px;
+      height: 30px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+    }
+
+    .wall {
+      background-color: #333;
+    }
+
+    .path {
+      background-color: #4CAF50;
+      /* Χρώμα για τη διαδρομή */
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+    }
+
+    .item {
+      padding: 10px;
     }
   </style>
 </head>
 
 <body>
-  <h1 style="text-align: center;">Real-Time ESP32 Data</h1>
-  left_wall: <div id="left_wall"></div> <br>
-  right_wall: <div id="right_wall"></div> <br>
-  straight_wall: <div id="straight_wall"></div> <br>
 
+
+  <div class="main">
+
+    <div class="item">
+      <h1>Maze Viewer 20x20</h1>
+      <div class="grid" id="grid"></div>
+    </div>
+
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
-
-    // Connect to the server using WebSockets
     const socket = io();
+    const gridElement = document.getElementById('grid');
 
-    // Listen for new data from the server
-    socket.on('newData', (data) => {
-      const currentTime = new Date().toLocaleTimeString();
+    const mazeWidth = 20;
+    const mazeHeight = 20;
 
-      // Add new data
-      const left_wall_element = document.getElementById('left_wall');
-      left_wall_element.innerText = data.left_wall;
+    // Δημιουργία κενών κελιών για το grid 10x10
+    function initializeGrid() {
+      gridElement.innerHTML = '';
+      for (let row = 0; row < mazeWidth; row++) {
+        for (let col = 0; col < mazeHeight; col++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.row = row;
+          cell.dataset.col = col;
+          gridElement.appendChild(cell);
+        }
+      }
+    }
 
-      const right_wall_element = document.getElementById('right_wall');
-      right_wall_element.innerText = data.right_wall;
+    // Ενημέρωση grid με τα δεδομένα του maze
+    function updateGrid(maze) {
+      for (let row = 0; row < mazeWidth; row++) {
+        for (let col = 0; col < mazeHeight; col++) {
+          const cell = gridElement.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+          cell.classList.remove('wall', 'path'); // Καθαρισμός παλαιότερης διαδρομής
+          if (maze[row][col] === 1) {
+            cell.classList.add('wall');
+          }
+        }
+      }
+    }
 
-      const lstraight_wall_element = document.getElementById('straight_wall');
-      straight_wall_element.innerText = data.straight_wall;
+    // Συνάρτηση για να εμφανίσει τη βέλτιστη διαδρομή
+    function drawPath(path) {
+      path.forEach(([row, col]) => {
+        const cell = gridElement.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+        cell.classList.add('path'); // Σήμανση της διαδρομής
+      });
+    }
 
+
+    // Ακρόαση για νέα δεδομένα maze από το server
+    socket.on('newMaze', (maze) => {
+      updateGrid(maze); // Ενημέρωση grid
     });
+
+    socket.on('newPath', (path) => {
+      drawPath(path); // Ενημέρωση grid
+    });
+
+    // Αρχικοποίηση του grid μόλις φορτώσει η σελίδα
+    initializeGrid();
   </script>
 
 </body>

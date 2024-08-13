@@ -1,58 +1,58 @@
 
 
-/* ********** Include the necessary libraries ********** */
-#include <Adafruit_NeoPixel.h> // RGB Led library
-#include <WiFi.h>              // WiFi library
-#include <Wire.h>              // Gyroscope library
-#include <HTTPClient.h>        // Http client library
-#include <ArduinoJson.h>       // JSON library
+/* ********** Συμπερίληψη των απαραίτητων βιβλιοθηκών ********** */
+#include <Adafruit_NeoPixel.h> // Βιβλιοθήκη για τον έλεγχο των RGB LED
+#include <WiFi.h>              // Βιβλιοθήκη για σύνδεση με Wi-Fi
+#include <Wire.h>              // Βιβλιοθήκη για τον γυροσκόπιο
+#include <HTTPClient.h>        // Βιβλιοθήκη για αποστολή HTTP αιτημάτων
+#include <ArduinoJson.h>       // Βιβλιοθήκη για χειρισμό JSON δεδομένων
 
-/* ********** Include the necessary pins ********** */
-#define BUILDIN_RGB_LED_PIN 48 // Define the pins for the RGB Led
+/* ********** Συμπερίληψη των απαραίτητων pins (άξονες σύνδεσης) ********** */
+#define BUILDIN_RGB_LED_PIN 48 // Ορισμός του pin για το ενσωματωμένο RGB LED
 
-#define TRIG_PIN 19 // Enable the trigger pin for the distance sensor
-#define ECHO_PIN 20 // Enable the echo pin for the distance sensor
+#define TRIG_PIN 19 // Ορισμός του trigger pin για τον αισθητήρα απόστασης
+#define ECHO_PIN 20 // Ορισμός του echo pin για τον αισθητήρα απόστασης
 
-#define RECV_PIN 1 // Enable the receive pin for the distance sensor
+#define RECV_PIN 1 // Ορισμός του pin λήψης για τον αισθητήρα απόστασης
 
-#define EXTERNAL_RGB_LED_RED_PIN 21   // Red pin for the external RGB LED
-#define EXTERNAL_RGB_LED_GREEN_PIN 47 // Green pin for the external RGB LED
-#define EXTERNAL_RGB_LED_BLUE_PIN 48  // Blue pin for the external RGB LED
+#define EXTERNAL_RGB_LED_RED_PIN 21   // Κόκκινο pin για το εξωτερικό RGB LED
+#define EXTERNAL_RGB_LED_GREEN_PIN 47 // Πράσινο pin για το εξωτερικό RGB LED
+#define EXTERNAL_RGB_LED_BLUE_PIN 48  // Μπλε pin για το εξωτερικό RGB LED
 
-#define MOTOR_LEFT_A_PHASE_PIN 4  // Define the pin for the left motor speed
-#define MOTOR_LEFT_A_ENABLE_PIN 5 // Define the enable pin for the left motor
+#define MOTOR_LEFT_A_PHASE_PIN 4  // Ορισμός του pin για την ταχύτητα του αριστερού κινητήρα
+#define MOTOR_LEFT_A_ENABLE_PIN 5 // Ορισμός του pin ενεργοποίησης του αριστερού κινητήρα
 
-#define MOTOR_RIGHT_B_PHASE_PIN 6  // Define the pin for the right motor speed
-#define MOTOR_RIGHT_B_ENABLE_PIN 7 // Define the enable pin for the right motor
+#define MOTOR_RIGHT_B_PHASE_PIN 6  // Ορισμός του pin για την ταχύτητα του δεξιού κινητήρα
+#define MOTOR_RIGHT_B_ENABLE_PIN 7 // Ορισμός του pin ενεργοποίησης του δεξιού κινητήρα
 
-// Define the ir sensors pins
-#define IR_SENSOR_1 3  // left sensor
-#define IR_SENSOR_2 8  // left sensor
-#define IR_SENSOR_3 15 // Straight sensor
-#define IR_SENSOR_4 16 // right sensor
-#define IR_SENSOR_5 17 // right sensor
-#define IR_SENSOR_6 18 // Straight sensor
+// Ορισμός των pins για τους αισθητήρες υπερύθρων (IR)
+#define IR_SENSOR_1 3  // Αριστερός αισθητήρας
+#define IR_SENSOR_2 8  // Αριστερός αισθητήρας
+#define IR_SENSOR_3 15 // Κεντρικός αισθητήρας
+#define IR_SENSOR_4 16 // Δεξιός αισθητήρας
+#define IR_SENSOR_5 17 // Δεξιός αισθητήρας
+#define IR_SENSOR_6 18 // Κεντρικός αισθητήρας
 
-/* ********** Include the necessary variables ********** */
-Adafruit_NeoPixel pixels(1, BUILDIN_RGB_LED_PIN, NEO_GRB + NEO_KHZ800); // Define the build in    RGB Led
+/* ********** Συμπερίληψη των απαραίτητων μεταβλητών ********** */
+Adafruit_NeoPixel pixels(1, BUILDIN_RGB_LED_PIN, NEO_GRB + NEO_KHZ800); // Ορισμός του ενσωματωμένου RGB LED
 
-const char *serverName = "http://192.168.1.4:3000/api/maze"; // Define the server ip address
-const char *ssid = "Vodafone-C43726133";                     // Define the SSID for the WiFi
-const char *password = "CYC9fKp9x9kH44Kt";                   // Define the password for the WiFi
-WiFiServer server(80);                                       // Define the server for the WiFi
+const char *serverName = "http://192.168.1.4:3000/api/maze"; // Διεύθυνση IP του server
+const char *ssid = "Vodafone-C43726133";                     // SSID για σύνδεση WiFi
+const char *password = "CYC9fKp9x9kH44Kt";                   // Κωδικός για τη σύνδεση WiFi
+WiFiServer server(80);                                       // Ορισμός του server για την σύνδεση WiFi
 
-const int MPU_ADDR = 0x68;                 // I2C address of the MPU-6050
-int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ; // Define the variables for the gyroscope
+const int MPU_ADDR = 0x68;                 // Διεύθυνση I2C του αισθητήρα MPU-6050
+int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ; // Ορισμός των μεταβλητών για το γυροσκόπιο
 
-const int base_speed = 100; // Define the base speed for the motors
+const int base_speed = 100; // Ορισμός της βασικής ταχύτητας για τους κινητήρες
 
-/* */
-const int mazeWidth = 20;
-const int mazeHeight = 20;
-const int startX = 0;
-const int startY = 0;
-const int goalX = 19;
-const int goalY = 19;
+/* ********** Ορισμός του λαβυρίνθου και των σημείων εκκίνησης και τερματισμού ********** */
+const int mazeWidth = 20;   // Πλάτος του λαβυρίνθου
+const int mazeHeight = 20;  // Ύψος του λαβυρίνθου
+const int startX = 0;       // Συντεταγμένη Χ για την εκκίνηση
+const int startY = 0;       // Συντεταγμένη Υ για την εκκίνηση
+const int goalX = 19;       // Συντεταγμένη Χ για τον στόχο
+const int goalY = 19;       // Συντεταγμένη Υ για τον στόχο
 
 // Δομή κόμβου του A*
 struct Node
@@ -71,8 +71,6 @@ int startY = 0;
 
 // Δισδιάστατος πίνακας για τους κόμβους
 Node nodes[mazeWidth][mazeHeight];
-
-bool run = true;
 
 /* ********** Setup function ********** */
 void setup()
@@ -134,21 +132,6 @@ void setup()
 void loop()
 {
 
-  if (run)
-  {
-    // Node* goalNode = aStar();
-
-    // if (goalNode != nullptr) {
-    //   Serial.println("Found path:");
-    //   followPath(goalNode);
-    // } else {
-    //   Serial.println("No path found.");
-    // }
-
-    // Ρύθμιση διαδρομής για αποστολή του maze σε JSON
-    sentDataToServer();
-    run = false;
-  }
 }
 
 /* ********** Set up external functions ********** */
@@ -263,114 +246,115 @@ void exploreMaze() {
 }
 
 void readIRSensorsValues(int *left_wall, int *right_wall, int *front_wall) {
-  // Read the values from he IR sensors
-  int left1 = analogRead(IR_SENSOR_1); // left sensor
-  int left2 = analogRead(IR_SENSOR_2); // left sensor
+  int left1 = analogRead(IR_SENSOR_1);
+  int left2 = analogRead(IR_SENSOR_2);
 
-  int right1 = analogRead(IR_SENSOR_4); // right sensor
-  int right2 = analogRead(IR_SENSOR_5); // right sensor
+  int right1 = analogRead(IR_SENSOR_4);
+  int right2 = analogRead(IR_SENSOR_5);
 
-  int front1 = analogRead(IR_SENSOR_3); // Straight sensor
-  int front2 = analogRead(IR_SENSOR_6); // Straight sensor
+  int front1 = analogRead(IR_SENSOR_3);
+  int front2 = analogRead(IR_SENSOR_6);
 
-  // Convert the values to 0 and 1.
-  if (left1 > 4000 || left2 > 4000)
-  {
+  if (left1 > 4000 || left2 > 4000){
     (*left_wall) = 1;
   }
 
-  if (right1 > 4000 || right2 > 4000)
-  {
+  if (right1 > 4000 || right2 > 4000){
     (*right_wall) = 1;
   }
 
-  if (front1 > 4000 || front2 > 4000)
-  {
+  if (front1 > 4000 || front2 > 4000){
     (*front_wall) = 1;
   }
 }
 
 // Δημιουργία διαδρομής με χρήση του A*
 Node *aStar() {
-  for (int x = 0; x < mazeWidth; x++)
-  {
-    for (int y = 0; y < mazeHeight; y++)
-    {
+  // Αρχικοποίηση όλων των κόμβων του λαβύρινθου
+  for (int x = 0; x < mazeWidth; x++){
+    for (int y = 0; y < mazeHeight; y++) {
+      // Ορισμός των συντεταγμένων και της αρχικής τιμής των παραμέτρων των κόμβων
       nodes[x][y].x = x;
       nodes[x][y].y = y;
-      nodes[x][y].g = INT_MAX;
-      nodes[x][y].h = heuristic(x, y, goalX, goalY);
-      nodes[x][y].f = INT_MAX;
-      nodes[x][y].parent = nullptr;
+      nodes[x][y].g = INT_MAX; // Αρχική τιμή του κόστους από την αρχή (μη δυνατό κόστος)
+      nodes[x][y].h = heuristic(x, y, goalX, goalY); // Υπολογισμός της εκτιμώμενης απόστασης προς τον στόχο
+      nodes[x][y].f = INT_MAX; // Αρχική τιμή του συνολικού κόστους (f = g + h)
+      nodes[x][y].parent = nullptr; // Δεν υπάρχει γονικός κόμβος στην αρχή
     }
   }
 
+  // Δημιουργία λίστας για τους ανοιχτούς κόμβους
   Node *openList[mazeWidth * mazeHeight];
   int openListSize = 0;
 
+  // Ορισμός του κόμβου εκκίνησης
   Node *startNode = &nodes[startX][startY];
-  startNode->g = 0;
-  startNode->f = startNode->h;
-  openList[openListSize++] = startNode;
+  startNode->g = 0;  // Το κόστος από την αρχή είναι 0
+  startNode->f = startNode->h; // Το συνολικό κόστος είναι μόνο το εκτιμώμενο κόστος (h)
+  openList[openListSize++] = startNode; // Προσθήκη του κόμβου εκκίνησης στη λίστα ανοιχτών κόμβων
 
-  while (openListSize > 0)
-  {
+  // Εκτέλεση του αλγορίθμου A*
+  while (openListSize > 0){
+    // Επιλογή του κόμβου με το μικρότερο συνολικό κόστος (f) από τη λίστα ανοιχτών κόμβων
     Node *current = openList[0];
     int currentIndex = 0;
-    for (int i = 1; i < openListSize; i++)
-    {
-      if (openList[i]->f < current->f)
-      {
+    for (int i = 1; i < openListSize; i++){
+      if (openList[i]->f < current->f){
         current = openList[i];
         currentIndex = i;
       }
     }
 
+    // Αφαίρεση του επιλεγμένου κόμβου από τη λίστα ανοιχτών
     openList[currentIndex] = openList[--openListSize];
 
-    if (current->x == goalX && current->y == goalY)
-    {
-      return current;
+    // Έλεγχος αν φτάσαμε στον στόχο
+    if (current->x == goalX && current->y == goalY){
+      return current; // Επιστροφή του τελικού κόμβου (στοχος)
     }
 
+    // Πίνακες για την κίνηση στους τέσσερις βασικούς προσανατολισμούς (δεξιά, αριστερά, πάνω, κάτω)
     int dx[4] = {1, -1, 0, 0};
     int dy[4] = {0, 0, 1, -1};
 
-    for (int i = 0; i < 4; i++)
-    {
-      int nx = current->x + dx[i];
-      int ny = current->y + dy[i];
+    // Εξέταση των γειτονικών κόμβων (προς όλες τις κατευθύνσεις)
+    for (int i = 0; i < 4; i++){
+      int nx = current->x + dx[i]; // Νέα θέση για τον άξονα x
+      int ny = current->y + dy[i]; // Νέα θέση για τον άξονα y
 
-      if (nx < 0 || nx >= mazeWidth || ny < 0 || ny >= mazeHeight || maze[nx][ny] == 1)
-      {
-        continue;
+      // Έλεγχος αν ο γειτονικός κόμβος είναι εκτός του λαβυρίνθου ή είναι τοίχος (maze[nx][ny] == 1)
+      if (nx < 0 || nx >= mazeWidth || ny < 0 || ny >= mazeHeight || maze[nx][ny] == 1){
+        continue; // Παράλειψη αυτών των κόμβων
       }
 
+      // Ανάθεση του γειτονικού κόμβου
       Node *neighbor = &nodes[nx][ny];
-      int tentative_g = current->g + 1;
+      int tentative_g = current->g + 1; // Υπολογισμός του προσωρινού κόστους για τον γειτονικό κόμβο
 
-      if (tentative_g < neighbor->g)
-      {
-        neighbor->parent = current;
-        neighbor->g = tentative_g;
-        neighbor->f = neighbor->g + neighbor->h;
+      // Αν το προσωρινό κόστος είναι μικρότερο από το τρέχον, ενημερώνουμε τον κόμβο
+      if (tentative_g < neighbor->g){
+        neighbor->parent = current; // Ορισμός του γονικού κόμβου
+        neighbor->g = tentative_g; // Ενημέρωση του κόστους από την αρχή
+        neighbor->f = neighbor->g + neighbor->h; // Ενημέρωση του συνολικού κόστους (f)
 
+        // Έλεγχος αν ο γειτονικός κόμβος υπάρχει ήδη στη λίστα ανοιχτών
         bool inOpenList = false;
-        for (int j = 0; j < openListSize; j++)
-        {
-          if (openList[j] == neighbor)
-          {
-            inOpenList = true;
+        for (int j = 0; j < openListSize; j++){
+          if (openList[j] == neighbor){
+            inOpenList = true; // Ο γειτονικός κόμβος είναι ήδη στη λίστα ανοιχτών
             break;
           }
         }
-        if (!inOpenList)
-        {
+
+        // Αν δεν υπάρχει ήδη, προσθέτουμε τον γειτονικό κόμβο στη λίστα ανοιχτών
+        if (!inOpenList){
           openList[openListSize++] = neighbor;
         }
       }
     }
   }
+  
+  // Αν δεν βρεθεί λύση (στόχος δεν είναι προσβάσιμος), επιστρέφουμε nullptr
   return nullptr;
 }
 
@@ -415,51 +399,48 @@ void followPath(Node *goalNode) {
 // Movement functions
 void moveForward() {
   forward_movement(150, 150); 
-  delay(1500); // Προχωρα 10cm
+  delay(1500); // Προχωράει 10cm
 }
 
+// Συνάρτηση για στροφή αριστερά
 void turnLeft() {
-  forward_movement(-150, 150); // Adjust for left turn
-  delay(2500);                  // Delay for turning duration
+  forward_movement(-150, 150); // Ρύθμιση για στροφή αριστερά (αρνητική ταχύτητα για αριστερό τροχό)
+  delay(2500);                  // Καθυστέρηση για την διάρκεια της στροφής
 }
 
+// Συνάρτηση για στροφή δεξιά
 void turnRight() {
-  forward_movement(150, -150); // Adjust for right turn
-  delay(2500);                  // Delay for turning duration
+  forward_movement(150, -150); // Ρύθμιση για στροφή δεξιά (αρνητική ταχύτητα για δεξιό τροχό)
+  delay(2500);                  // Καθυστέρηση για την διάρκεια της στροφής
 }
 
+// Συνάρτηση για κίνηση προς τα εμπρός με καθορισμένη ταχύτητα στους δύο κινητήρες
 void forward_movement(int speedA, int speedB) {
-  // Check if speedA is negative (indicating reverse direction)
-  if (speedA < 0)
-  {
-    // Convert speedA to positive for PWM control
+  // Έλεγχος αν η ταχύτητα του αριστερού κινητήρα είναι αρνητική (υποδεικνύει κίνηση προς τα πίσω)
+  if (speedA < 0){
     speedA = 0 - speedA;
-    // Set motor phase to LOW for reverse direction on the left motor
+    // Ορισμός φάσης του κινητήρα αριστερά σε LOW για κίνηση προς τα πίσω
     digitalWrite(MOTOR_LEFT_A_PHASE_PIN, LOW);
   }
-  else
-  {
-    // Set motor phase to HIGH for forward direction on the left motor
+  else{
+    // Ορισμός φάσης του κινητήρα αριστερά σε HIGH για κίνηση προς τα εμπρός
     digitalWrite(MOTOR_LEFT_A_PHASE_PIN, HIGH);
   }
 
-  // Check if speedB is negative (indicating reverse direction)
-  if (speedB < 0)
-  {
-    // Convert speedB to positive for PWM control
+  // Έλεγχος αν η ταχύτητα του δεξιού κινητήρα είναι αρνητική (υποδεικνύει κίνηση προς τα πίσω)
+  if (speedB < 0){
     speedB = 0 - speedB;
-    // Set motor phase to HIGH for forward direction on the right motor
+    // Ορισμός φάσης του κινητήρα δεξιά σε HIGH για κίνηση προς τα εμπρός
     digitalWrite(MOTOR_RIGHT_B_PHASE_PIN, HIGH);
   }
-  else
-  {
-    // Set motor phase to LOW for reverse direction on the right motor
+  else{
+    // Ορισμός φάσης του κινητήρα δεξιά σε LOW για κίνηση προς τα πίσω
     digitalWrite(MOTOR_RIGHT_B_PHASE_PIN, LOW);
   }
 
-  // Apply PWM signal to the left motor to control its speed
+  // Εφαρμογή σήματος PWM στον αριστερό κινητήρα για τον έλεγχο της ταχύτητας
   analogWrite(MOTOR_LEFT_A_ENABLE_PIN, speedA);
-  // Apply PWM signal to the right motor to control its speed
+  // Εφαρμογή σήματος PWM στον δεξιό κινητήρα για τον έλεγχο της ταχύτητας
   analogWrite(MOTOR_RIGHT_B_ENABLE_PIN, speedB);
 }
 
@@ -474,20 +455,20 @@ void turnOnRGBLeds(int red, int blue, int green) {
   digitalWrite(EXTERNAL_RGB_LED_BLUE_PIN, blue);
 }
 
-// Function to get distance in centimeters
+// Συνάρτηση για την απόκτηση απόστασης σε εκατοστά
 long getDistanceCM() {
-    // Send a 10-microsecond pulse to the trigger pin
-    digitalWrite(TRIG_PIN, LOW);
-    delayMicroseconds(2);
-    digitalWrite(TRIG_PIN, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(TRIG_PIN, LOW);
+  // Αποστολή παλμού διάρκειας 10 μικροδευτερολέπτων στην ακίδα ενεργοποίησης (trigger)
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);      // Εγγύηση χαμηλού σήματος για 2 μικροδευτερόλεπτα
+  digitalWrite(TRIG_PIN, HIGH); // Αποστολή παλμού υψηλού σήματος
+  delayMicroseconds(10);     // Παλμός υψηλού σήματος για 10 μικροδευτερόλεπτα
+  digitalWrite(TRIG_PIN, LOW);  // Επαναφορά σε χαμηλό σήμα
 
-    // Measure the time taken for the echo pulse to be received
-    long duration = pulseIn(ECHO_PIN, HIGH);
+  // Μέτρηση χρόνου επιστροφής του παλμού ηχούς (echo)
+  long duration = pulseIn(ECHO_PIN, HIGH);
 
-    // Calculate distance in cm (speed of sound = 34300 cm/s, round trip)
-    long distanceCM = duration * 0.034 / 2;
+  // Υπολογισμός απόστασης σε cm (ταχύτητα ήχου = 34300 cm/s, διπλή διαδρομή)
+  long distanceCM = duration * 0.034 / 2;
 
-    return distanceCM;
+  return distanceCM; // Επιστροφή της απόστασης σε εκατοστά
 }

@@ -129,9 +129,27 @@ void setup()
 }
 
 /* ********** Set up loop function ********** */
-void loop()
-{
+void loop() {
+  // Βήμα 1: Εξερεύνηση του λαβύρινθου
+  /* Καλούμε τη συνάρτηση για να ξεκινήσει την εξερεύνηση του λαβύρινθου. 
+      Το ρομπότ χαρτογραφεί τον χώρο καθώς κινείται */
+  exploreMaze();
 
+  // Βήμα 2: Αποστολή δεδομένων στον server
+  sentDataToServer();
+
+  // Βήμα 3: Ενεργοποίηση των RGB LEDs σε πράσινο χρώμα
+  /* Ενεργοποιεί τα RGB LEDs σε πράσινο χρώμα 
+      ως ένδειξη επιτυχούς συλλογής δεδομένων και αποστολής
+  */
+  turnOnRGBLeds(0, 255, 0);  // Πράσινο χρώμα
+
+  // Βήμα 4: Αναμονή για 15 δευτερόλεπτα
+  delay(15000);
+
+  // Βήμα 5: Λύση του λαβύρινθου με χρήση A*
+  Node *goalNode = aStar();
+  followPath(goalNode);
 }
 
 /* ********** Set up external functions ********** */
@@ -366,39 +384,59 @@ void followPath(Node *goalNode) {
   Node *path[mazeWidth * mazeHeight];
   int pathLength = 0;
 
-  while (currentNode)
-  {
+  while (currentNode) {
     path[pathLength++] = currentNode;
     currentNode = currentNode->parent;
   }
 
-  for (int i = pathLength - 1; i > 0; i--)
-  {
+  /* 
+  Η turnLeft() περιστρέφει το ρομπότ αριστερά κατά 90 μοίρες. 
+  Αν χρειάζεται περιστροφή δεξιά, γίνεται με διαδοχικές αριστερές στροφές
+  μέχρι να φτάσει στην επιθυμητή κατεύθυνση.
+  */
+
+  // Αρχική κατεύθυνση του ρομπότ (0 = Up, 1 = Right, 2 = Down, 3 = Left)
+  int currentDirection = 0; 
+
+  for (int i = pathLength - 1; i > 0; i--) {
     Node *from = path[i];
     Node *to = path[i - 1];
 
-    if (to->x == from->x + 1)
-    {
-      Serial.println("Move Down");
-    }
-    else if (to->x == from->x - 1)
-    {
-      Serial.println("Move Up");
-    }
-    else if (to->y == from->y + 1)
-    {
-      Serial.println("Move Right");
-    }
-    else if (to->y == from->y - 1)
-    {
-      Serial.println("Move Left");
+    // Υπολογίζουμε την επόμενη κίνηση
+    if (to->x == from->x + 1) { // Move Down
+      while (currentDirection != 2) {
+        turnLeft();
+        currentDirection = (currentDirection + 3) % 4;
+      }
+      moveForward();
+    } 
+    else if (to->x == from->x - 1) { // Move Up
+      while (currentDirection != 0) {
+        turnLeft();
+        currentDirection = (currentDirection + 3) % 4;
+      }
+      moveForward();
+    } 
+    else if (to->y == from->y + 1) { // Move Right
+      while (currentDirection != 1) {
+        turnLeft();
+        currentDirection = (currentDirection + 3) % 4;
+      }
+      moveForward();
+    } 
+    else if (to->y == from->y - 1) { // Move Left
+      while (currentDirection != 3) {
+        turnLeft();
+        currentDirection = (currentDirection + 3) % 4;
+      }
+      moveForward();
     }
   }
 }
 
 // Movement functions
 void moveForward() {
-  forward_movement(150, 150); 
+  forward_movement(100, 100); // Slow speed for both motors 
   delay(1500); // Προχωράει 10cm
 }
 

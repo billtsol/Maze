@@ -48,6 +48,10 @@ WiFiServer server(80);                                       // Ορισμός �
 const int MPU_ADDR = 0x68;                 // Διεύθυνση I2C του αισθητήρα MPU-6050
 int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ; // Ορισμός των μεταβλητών για το γυροσκόπιο
 
+// Αρχικός προσανατολισμός
+enum Direction { NORTH, EAST, SOUTH, WEST };
+Direction currentDirection = NORTH;
+
 const int base_speed = 100; // Ορισμός της βασικής ταχύτητας για τους κινητήρες
 
 /* ********** Ορισμός του λαβυρίνθου και των σημείων εκκίνησης και τερματισμού ********** */
@@ -223,44 +227,54 @@ void initializeMazeMap() {
   mazeMap[startY][startX] = 0; // Ξεκινάει από το σημείο του ρομπότ
 }
 
+// Συνάρτηση για την εξερεύνηση του λαβύρινθου
 void exploreMaze() {
-  // Αρχικές συντεταγμένες του ρομπότ
   int x = startX;
   int y = startY;
 
-  // Προσδιορισμός τοίχων
   int left_wall = 0, right_wall = 0, front_wall = 0;
 
-  // Επαναλαμβανόμενη κίνηση για εξερεύνηση
   while (true) {
     // Ανάγνωση αισθητήρων
     readIRSensorsValues(&left_wall, &right_wall, &front_wall);
 
-    // Ενημέρωση πίνακα με βάση την ανίχνευση εμποδίων
+    // Έλεγχος για εμπόδιο μπροστά
     if (front_wall) {
       mazeMap[y][x] = 1; // Καταγράφουμε το εμπόδιο μπροστά
 
-      // Αν υπάρχει τοίχος μπροστά, ελέγχουμε πλάγια
+      // Αλλαγή κατεύθυνσης με βάση τους τοίχους και προσανατολισμό
       if (!left_wall) {
         turnLeft();
+        updateDirection(-90);
         moveForward();
-        x--; // Μετακίνηση αριστερά στον πίνακα
+        if (currentDirection == NORTH) y--;
+        else if (currentDirection == EAST) x++;
+        else if (currentDirection == SOUTH) y++;
+        else if (currentDirection == WEST) x--;
       } else if (!right_wall) {
         turnRight();
+        updateDirection(90);
         moveForward();
-        x++; // Μετακίνηση δεξιά στον πίνακα
+        if (currentDirection == NORTH) y--;
+        else if (currentDirection == EAST) x++;
+        else if (currentDirection == SOUTH) y++;
+        else if (currentDirection == WEST) x--;
       } else {
-        // Αν υπάρχουν τοίχοι και στις τρεις κατευθύνσεις, το ρομπότ σταματά
+        // Αν υπάρχουν τοίχοι σε όλες τις κατευθύνσεις, σταματάμε
         break;
       }
     } else {
       // Αν δεν υπάρχει εμπόδιο μπροστά, προχωράμε ευθεία
       moveForward();
-      y++; // Προχώρημα μπροστά στον πίνακα
+      if (currentDirection == NORTH) y--;
+      else if (currentDirection == EAST) x++;
+      else if (currentDirection == SOUTH) y++;
+      else if (currentDirection == WEST) x--;
+
       mazeMap[y][x] = 0; // Καταγράφουμε το σημείο ως προσπελάσιμο
     }
 
-    // Έλεγχος συνόρων και διακοπή αν το ρομπότ πλησιάσει τα άκρα του πίνακα
+    // Έλεγχος αν το ρομπότ πλησιάζει στα όρια του λαβύρινθου
     if (x < 0 || x >= mazeWidth || y < 0 || y >= mazeHeight) {
       break;
     }
@@ -513,4 +527,28 @@ long getDistanceCM() {
   long distanceCM = duration * 0.034 / 2;
 
   return distanceCM; // Επιστροφή της απόστασης σε εκατοστά
+}
+
+// Συνάρτηση για την ανάγνωση των τιμών του γυροσκοπίου
+void readGyroscope() {
+  Wire.beginTransmission(MPU_ADDR);
+  Wire.write(0x43); // Το καταχωρητής του γυροσκοπίου
+  Wire.endTransmission(false);
+  Wire.requestFrom(MPU_ADDR, 6, true);
+
+  GyX = Wire.read() << 8 | Wire.read();
+  GyY = Wire.read() << 8 | Wire.read();
+  GyZ = Wire.read() << 8 | Wire.read();
+}
+
+// Συνάρτηση για να ενημερώνουμε τον προσανατολισμό
+void updateDirection(int turn) {
+  // Ανάλογα με τη στροφή, αλλάζουμε προσανατολισμό
+  if (turn == -90) { // Αριστερή στροφή
+    currentDirection = (Direction)((currentDirection + 3) % 4);
+  } else if (turn == 90) { // Δεξιά στροφή
+    currentDirection = (Direction)((currentDirection + 1) % 4);
+  } else if (turn == 180) { // Στροφή 180 μοιρών
+    currentDirection = (Direction)((currentDirection + 2) % 4);
+  }
 }

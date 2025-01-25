@@ -1,4 +1,4 @@
-# Arduino Maze-Solving Robot
+# Maze-Solving Robot
 
 This project demonstrates how to use an Arduino board, IR sensors, and a motor driver shield to create a maze-solving robot. The robot is designed to navigate mazes by detecting, using sensors to make decisions at intersections.
 
